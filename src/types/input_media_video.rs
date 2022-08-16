@@ -4,6 +4,7 @@
 use crate::types::{InputFile, MessageEntity};
 use serde::{Deserialize, Serialize};
 
+
 /// Represents a video to be sent.
 /// <https://core.telegram.org/bots/api#inputmediavideo>
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -31,7 +32,7 @@ pub struct InputMediaVideo {
     /// Optional. Video duration in seconds
     #[serde(skip_serializing_if = "Option::is_none")]
     pub duration: Option<i64>,
-    /// Optional. Pass True, if the uploaded video is suitable for streaming
+    /// Optional. Pass True if the uploaded video is suitable for streaming
     #[serde(skip_serializing_if = "Option::is_none")]
     pub supports_streaming: Option<bool>,
 }
