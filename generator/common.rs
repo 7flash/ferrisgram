@@ -96,3 +96,13 @@ pub fn create_file(name: String, text: String) -> bool {
         Ok(_) => true,
     }
 }
+
+pub fn read_file(name: String) -> String {
+    match read_to_string(name) {
+        Err (_) => {
+            println!("failed to read file");
+            "{}".to_string()
+        },
+        Ok(data) => data,
+    }
+}
