@@ -1,0 +1,421 @@
+{
+    "methods": {
+        "sendPhoto": {
+            "name": "sendPhoto",
+            "href": "https://core.telegram.org/bots/api#sendphoto",
+            "description": [
+                "Use this method to send photos. On success, the sent Message is returned."
+            ],
+            "returns": [
+                "Message"
+            ],
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "photo",
+                    "types": [
+                        "InputFile",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files: https://core.telegram.org/bots/api#sending-files"
+                },
+                {
+                    "name": "caption",
+                    "types": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the photo caption. See formatting options for more details."
+                },
+                {
+                    "name": "caption_entities",
+                    "types": [
+                        "Array of MessageEntity"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "disable_notification",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                {
+                    "name": "protect_content",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                {
+                    "name": "reply_to_message_id",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "If the message is a reply, ID of the original message"
+                },
+                {
+                    "name": "allow_sending_without_reply",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup",
+                        "ReplyKeyboardMarkup",
+                        "ReplyKeyboardRemove",
+                        "ForceReply"
+                    ],
+                    "required": false,
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user."
+                }
+            ]
+        },
+        "sendMediaGroup": {
+            "name": "sendMediaGroup",
+            "href": "https://core.telegram.org/bots/api#sendmediagroup",
+            "description": [
+                "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned."
+            ],
+            "returns": [
+                "Array of Message"
+            ],
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "Array of InputMediaAudio",
+                        "Array of InputMediaDocument",
+                        "Array of InputMediaPhoto",
+                        "Array of InputMediaVideo"
+                    ],
+                    "required": true,
+                    "description": "A JSON-serialized array describing messages to be sent, must include 2-10 items"
+                },
+                {
+                    "name": "disable_notification",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Sends messages silently. Users will receive a notification with no sound."
+                },
+                {
+                    "name": "protect_content",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Protects the contents of the sent messages from forwarding and saving"
+                },
+                {
+                    "name": "reply_to_message_id",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "If the messages are a reply, ID of the original message"
+                },
+                {
+                    "name": "allow_sending_without_reply",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
+                }
+            ]
+        },
+        "getMe": {
+            "name": "getMe",
+            "href": "https://core.telegram.org/bots/api#getme",
+            "description": [
+                "A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object."
+            ],
+            "returns": [
+                "User"
+            ]
+        },
+        "getUpdates": {
+            "name": "getUpdates",
+            "href": "https://core.telegram.org/bots/api#getupdates",
+            "description": [
+                "Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects."
+            ],
+            "returns": [
+                "Array of Update"
+            ],
+            "fields": [
+                {
+                    "name": "offset",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called with an offset higher than its update_id. The negative offset can be specified to retrieve updates starting from -offset update from the end of the updates queue. All previous updates will forgotten."
+                },
+                {
+                    "name": "limit",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100."
+                },
+                {
+                    "name": "timeout",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only."
+                },
+                {
+                    "name": "allowed_updates",
+                    "types": [
+                        "Array of String"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [\"message\", \"edited_channel_post\", \"callback_query\"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used. Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time."
+                }
+            ]
+        },
+        "sendMessage": {
+            "name": "sendMessage",
+            "href": "https://core.telegram.org/bots/api#sendmessage",
+            "description": [
+                "Use this method to send text messages. On success, the sent Message is returned."
+            ],
+            "returns": [
+                "Message"
+            ],
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "text",
+                    "types": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Text of the message to be sent, 1-4096 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the message text. See formatting options for more details."
+                },
+                {
+                    "name": "entities",
+                    "types": [
+                        "Array of MessageEntity"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "disable_web_page_preview",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Disables link previews for links in this message"
+                },
+                {
+                    "name": "disable_notification",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                {
+                    "name": "protect_content",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                {
+                    "name": "reply_to_message_id",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "If the message is a reply, ID of the original message"
+                },
+                {
+                    "name": "allow_sending_without_reply",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup",
+                        "ReplyKeyboardMarkup",
+                        "ReplyKeyboardRemove",
+                        "ForceReply"
+                    ],
+                    "required": false,
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user."
+                }
+            ]
+        },
+        "copyMessage": {
+            "name": "copyMessage",
+            "href": "https://core.telegram.org/bots/api#copymessage",
+            "description": [
+                "Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
+            ],
+            "returns": [
+                "MessageId"
+            ],
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "from_chat_id",
+                    "types": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Message identifier in the chat specified in from_chat_id"
+                },
+                {
+                    "name": "caption",
+                    "types": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the new caption. See formatting options for more details."
+                },
+                {
+                    "name": "caption_entities",
+                    "types": [
+                        "Array of MessageEntity"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in the new caption, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "disable_notification",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                {
+                    "name": "protect_content",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                {
+                    "name": "reply_to_message_id",
+                    "types": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "If the message is a reply, ID of the original message"
+                },
+                {
+                    "name": "allow_sending_without_reply",
+                    "types": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup",
+                        "ReplyKeyboardMarkup",
+                        "ReplyKeyboardRemove",
+                        "ForceReply"
+                    ],
+                    "required": false,
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user."
+                }
+            ]
+        }
+    },
+    "types": {}
+}

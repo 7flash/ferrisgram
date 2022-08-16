@@ -71,9 +71,9 @@ async fn echo(bot: Bot, ctx: Context) -> Result<GroupIteration> {
     // Hence we can unwrap effective chat without checking if it is none.
     let chat = ctx.effective_chat.unwrap();
     // Same logic as chat applies on unwrapping effective message here.
-    let msg = ctx.effective_message.unwrap();
+    // let msg = ctx.effective_message.unwrap();
     // Every api method creates a builder which contains various parameters of that respective method.
-    bot.copy_message(chat.id, chat.id, msg.message_id)
+    bot.send_photo(chat.id, String::from(""))
         // You must use this send() method in order to send the request to the API
         .send()
         .await?;
